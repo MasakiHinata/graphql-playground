@@ -6,12 +6,12 @@ import (
 	"log"
 )
 
-var users = map[string]model.User{}
+var users = map[string]*model.User{}
 
 func GetUsers() []*model.User {
-	v := make([]*model.User, len(users))
+	var v []*model.User
 	for _, user := range users {
-		v = append(v, &user)
+		v = append(v, user)
 	}
 	return v
 }
@@ -19,17 +19,17 @@ func GetUsers() []*model.User {
 func GetUser(id *string) (*model.User, error) {
 	user, ok := users[*id]
 	if ok {
-		return &user, nil
+		return user, nil
 	} else {
 		return nil, fmt.Errorf("cannot find user: id=%s", *id)
 	}
 }
 
 func AddUser(id *string, name *string, age *int) *model.User {
-	user := model.User{ID: *id, Name: *name, Age: *age}
+	user := &model.User{ID: *id, Name: *name, Age: *age}
 	users[*id] = user
 	log.Println("User added:", user)
-	return &user
+	return user
 }
 
 func DeleteUser(id *string) (*model.User, error) {
