@@ -5,10 +5,10 @@ package graph
 
 import (
 	"context"
-	"github.com/MasakiHinata/go/graphql/user"
 
 	"github.com/MasakiHinata/go/graphql/graph/generated"
 	"github.com/MasakiHinata/go/graphql/graph/model"
+	"github.com/MasakiHinata/go/graphql/user"
 )
 
 func (r *mutationResolver) AddUser(ctx context.Context, id *string, name *string, age *int) (*model.User, error) {

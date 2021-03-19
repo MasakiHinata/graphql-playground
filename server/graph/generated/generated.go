@@ -221,7 +221,7 @@ func (ec *executionContext) introspectType(name string) (*introspection.Type, er
 }
 
 var sources = []*ast.Source{
-	{Name: "graph/schema.graphqls", Input: `schema {
+	{Name: "../graph/schema.graphqls", Input: `schema {
     query: Query
 
     mutation: Mutation
@@ -240,7 +240,7 @@ type Mutation {
 
     deleteUser(id: String): User
 }`, BuiltIn: false},
-	{Name: "graph/user.graphqls", Input: `
+	{Name: "../graph/user.graphqls", Input: `
 type User{
     id: String!
 
